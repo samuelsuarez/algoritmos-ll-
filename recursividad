@@ -1,0 +1,163 @@
+// 2clase.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+using namespace std;
+//TEMA RECURSIVIDAD
+
+//Mostrar los n primeros numeros naturales impares
+/*
+void MostrarImpares (int n)
+{
+	if (n==1)
+		cout<<1<<"  ";
+	else
+		{
+			MostrarImpares (n-1);
+			if (n % 2 == 1)
+  				cout<<n<<"  ";
+	    }
+}
+
+
+void main()
+{int n;
+ cin>>n;
+ MostrarImpares (n);
+ getch();
+}
+*/
+
+
+// Mostrar los n primeros elementos de la sgte serie:
+//1!/1^1  2!/2^2  3!/3^3....
+
+
+/*float Factorial (int n)
+	 {if (n==0)
+	   return 1;
+	 else
+	 {int x=Factorial (n-1);
+      return (x*n);
+     }
+   }
+
+float Potencia (int x,int y)
+{
+ if (y==0)
+	 return 1;
+ else 
+ { int a=Potencia (x,y-1);
+   return a*x;
+ }
+}
+
+
+void MostrarSerie (int n)
+{  if (n==0)
+    {
+		
+    
+    }
+   else
+   { MostrarSerie (n-1);
+      cout<<Factorial(n)/Potencia(n,n)<<" ";
+    }
+
+}
+
+
+void main()
+{
+	int n;
+	cin>>n;
+	MostrarSerie (n);
+	getch(); 
+
+
+}*/
+
+//Mostrar la suma de los digitos de un numero
+/* int SumaDigitos (int num)
+ {
+	 if (num<10)
+		 return num;
+	 else
+	 {
+		 int x=SumaDigitos (num/10);
+		 return x+ num % 10;
+	 }
+ }
+
+
+ void main ()
+	{ int num,S;
+      cout<<"Ingrese el numero";
+	  cin>>num;
+	  S=SumaDigitos (num);
+	  cout<<"La suma de los digitos es: "<<S;
+      getch();
+ }*/
+
+
+
+/*int DigitoMayor (int num)
+{
+	if (num<10)
+      return num;
+    else
+     { int may=DigitoMayor (num/10);
+	
+	   if (num%10>may)
+		   return num%10;
+	   else
+		   return may;
+	}
+}
+
+
+void main()
+{
+	int num;
+    cin>>num;
+    int x=DigitoMayor (num);
+    cout<<"El digito mayor es: "<<x;
+    getch();
+
+	}*/
+
+//Mostrar la suma de los digitos pares
+//EJ: 75361 R.-8
+ 
+int SumParesDigito(int num)
+{ 
+	if (num<10)
+	{
+		if (num%2==0)
+			return num;
+		else 
+			return 0;
+	}
+	else 
+		{
+			int x = SumParesDigito (num/10);
+		    if ((num%10)%2==0)
+				{
+					return num%10+x;
+			        
+			    }
+			else 
+				    return x;
+	   }
+}
+
+void main ()
+{
+	int num;
+	cin>>num;
+	int a=SumParesDigito (num);
+	cout<<"La suma de los pares es; "<<a;
+	getch();
+}
