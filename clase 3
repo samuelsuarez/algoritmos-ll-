@@ -1,0 +1,160 @@
+// clase n°3.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+using namespace std;
+
+
+void cargar (int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{ int x;
+	   cout<<"v["<<i<<"]: ";
+	   cin>>x;
+	   v[i]=x;
+	}
+}
+
+void mostrar (int v[],int n)
+{
+	cout<<"El vector original es: ";
+	for(int i=0;i<n;i++)
+    {  
+		
+		cout<<v[i]<<"  ";
+	    
+    }
+}
+
+//Suma de los numeros impares de un vector
+int sumaImpares (int v[],int n)
+{
+	if(n==1)
+	{
+		if (v[0]%2==0)
+			return 0;
+		else
+			return v[0];
+	}
+	else
+	{
+		int s=sumaImpares (v,n-1);
+		if (v[n-1]%2==0)
+			return s;
+		else
+			return s+v[n-1];
+	}
+}
+
+// Verificar si el vector esta ordenado descendentemente
+bool verificarorden (int v[],int n)
+{
+	if (n==1)
+	return true;
+	else
+	{ 
+		bool x= verificarorden (v,n-1);
+		if (v[n-2]>v[n-1])
+			return true;
+		else 
+			return false;
+	}
+}
+
+//Verificar si un valor x, existe entre los elemtos de un vector.
+bool existe (int v[],int n,int x)
+{
+	if (n==0)
+	{
+	}
+	if (n==1)
+	{
+		if(v[0]==x)
+			return true;
+		else
+			return false;
+	}
+	else
+	{
+	    bool a=existe (v,n-1,x);
+	    if(a==true)
+			return true;
+		else
+		{
+
+      		if (v[n-1]==x)
+			return true;
+		    else
+			return false;
+	    }
+	}
+}
+
+//Dado un vector de elementos, cambiar sus valores elevando al cuadrado cada uno de sus elementos
+void Ecuadrado (int v[],int n)
+{
+   if(n==0)
+   {
+   }
+   else
+	{
+		Ecuadrado (v,n-1);
+        v[n-1]=v[n-1]*v[n-1];
+   }
+}
+
+//capicua
+bool capicua (int v[],int n)
+{
+	
+	if (n==1)
+	   return true;
+	else 
+		if (n==2)
+		{ 
+			if(v[0]==v[1])
+				return true;
+			else
+				return false;
+		}
+		else 
+		{
+			bool x=capicua (v,n-1);
+			
+ 			
+
+void main ()
+{
+	int v[50];
+	int x,i;
+    cout<<"Ingresar la cantidad de elementos del vector: ";
+	cin>>x;
+	cargar (v,x);
+	mostrar (v,x);
+	/*int s=sumaImpares (v,x);
+	cout<<endl<<"La suma de los numeros impares es: "<<s;
+	*/
+	/*bool a=verificarorden (v,x);
+	if (a==true)
+		cout<<"el vector esta ordenado descendentemente";
+	else
+		cout<<"El vector no esta ordenado descendentemente";
+		*/
+	/*cout<<"Ingresar el numero a verificar: ";
+	cin>>i;
+	bool b=existe (v,x,i);
+		if(b==true)
+			cout<<"El numero ingresado si existe";
+		else
+			cout<<"El numero ingresado no existe";
+	*/
+    /*Ecuadrado (v,x);
+	cout<<endl<<"El vector elevado al cuadrado es: ";
+	mostrar (v,x);
+	*/
+
+
+	getch ();
+}
