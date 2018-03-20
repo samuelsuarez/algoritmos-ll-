@@ -1,0 +1,379 @@
+// practico 1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+// 1. Mostrar la suma de los primeros elementos de la serie: 
+//S= -1!/1^2 + 2!/2^2 -3!/3^2 + 4!/4^2…
+
+/*float Factorial (int n)
+{
+	if (n==0)
+		return 1;
+	else 
+	{	
+		float Fac=Factorial (n-1);
+	    return Fac*n; 
+	}    
+}
+
+float Potencia (int n, int x)
+{
+  if (x==0)
+	  return 1;
+  else
+	  {
+		  float Pot=Potencia (n,x-1);
+          return Pot*n;
+      }
+}
+
+
+float mostrarSuma (int n)
+{
+	if (n==0)
+		return 1;
+	else
+	{
+		float S = mostrarSuma (n-1);
+	    if (n%2 == 0)
+			return S = S + Factorial (n)/Potencia (n,2);
+		else
+			return S = S - Factorial (n)/Potencia (n,2);
+	}
+}
+
+
+
+
+void main ()
+{
+	int n;
+	cout<<"Ingresar el numero de terminos: ";
+	cin>>n;
+	float Suma=mostrarSuma (n);
+	cout<<"La suma de la serie es: "<<Suma<<endl;
+
+	getch ();
+}
+
+*/
+
+//2. Verificar si los dígitos de un número están ordenados ascendentemente.
+/*int SumaDigitos (int n)
+{
+	if (n<10)
+		return n;
+	else
+		{
+			int Sum=SumaDigitos (n/10);
+            return Sum + n%10;
+	    }
+}
+
+void main ()
+{
+	int n;
+	cout<<"Ingresar el numero: ";
+	cin>>n;
+	cout<<"La suma de los digitos del numero es: ";
+	int S=SumaDigitos (n);
+	cout<<S;
+	getch ();
+}
+*/
+
+//3. Eliminar los dígitos pares de un número
+
+/*int EliminarPares (int n)
+{
+	if (n/10<10)
+	{
+		if (n%2==0)
+			return 0;
+		else
+			return n;
+	}
+	else
+	{
+		a = EliminarPares (n/10);
+		if ((n%10)%2==0)
+		{
+		    return a;
+		}
+		else
+		{
+		    return x*10+n%10
+		}
+	}
+}
+
+void main ()
+{
+	int n;
+	cout<<"Ingresar el numero a modificar: ";
+	cin>>n;
+	int E=EliminarPares (n);
+	cout<<"El nuevo numero es: "<<E;
+	getch ();
+}
+*/
+
+//4. Verificar que los elementos de un vector 
+//forma un número capicúa.
+
+/*void CargarVector(int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cin>>v[i];
+	}
+return ;
+}
+
+void MostrarVector (int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout<<v[i]<<" ";
+	}
+return ;
+}
+
+
+
+bool CAPICUA (int v[], int i, int k)
+{
+	int n=k-i+1;
+	if (n==1)
+		return true;
+	if (n==2)
+	{
+		if (v[i]==v[k])
+			return true;
+		else
+			return false;
+	}
+	else 
+		bool C=CAPICUA (v,i+1,k-1);
+		if (v[i]==v[k])
+		{
+			if(C==true)
+				return true;
+			else
+				return false;
+
+		}
+		else 
+			return false;
+}
+
+
+void main ()
+{
+	int v[50],i,k;
+	cout<<"Ingresar los limites numericos; ";
+	cin>>i;
+	cout<<" ";
+	cin>>k;
+	bool k=CAPICUA (v,i,k);
+	if (k==true)
+		cout<<"El numero es capicua";
+	else
+		cout<<"El numero no es capicua";
+getch ();
+}
+*/
+
+//5. Rotar los elementos de un vector una casilla 
+//a la derecha (Como las manillas del reloj)
+
+/*void Intercambiar (int v[],int n)
+{
+	int a;
+	for (int i=0;i<n/2;i++)
+	{
+		a=v[i];
+		v[i]=v[n-1];
+		v[n-1]=a;
+	}
+}
+
+
+
+
+void RotarElem (int v[],int n)
+{
+	if (n==1)
+		cout<<v[0];
+	if (n==2)
+		Intercambiar (v,2);
+	else 
+	{
+		RotarElem (v,n-1);
+	       
+		
+
+
+
+
+
+
+
+
+*/
+
+//6. Invertir los elementos de un vector
+
+/*void CargarVector(int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cin>>v[i];
+	}
+return ;
+}
+
+void MostrarVector (int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout<<v[i]<<" ";
+	}
+return ;
+}
+
+void Intercambiar (int v[],int n)
+{
+	int a;
+	for (int i=0;i<n/2;i++)
+	{
+		a=v[i];
+		v[i]=v[n-1];
+		v[n-1]=a;
+	}
+}
+
+
+void InvertirVec(int v[], int n)
+{
+	if (n==0)
+	{
+	}
+	if (n==1)
+	{
+	}
+	else 
+	{
+		InvertirVec (v, n-1);
+	    Intercambiar (v,n);
+	}
+}
+
+void main ()
+{
+	int v[50], n;
+	cout<<"El numero de elementos: ";
+	cin>>n;
+    CargarVector (v,n);
+	InvertirVec (v,n);
+	cout<<endl;
+	MostrarVector (v,n);
+	getch ();
+}
+
+*/
+
+//7. Calcular el promedio de los elementos de un vector
+/*void CargarVector(int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cin>>v[i];
+	}
+return ;
+}
+
+void MostrarVector (int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout<<v[i]<<" ";
+	}
+return ;
+}
+
+int Promedio (int v[], int n)
+{
+	if (n==0)
+		return 0;
+	if (n==1)
+		return v[0];
+	else 
+	{
+		int P=Promedio (v,n-1);
+		return (P+v[n-1])/2;
+	}
+}
+
+void main ()
+{
+	int v[50],n;
+	cout<<"Ingresa la cantidad de elementos: ";
+	cin>>n;
+	CargarVector (v,n);
+	cout<<"El vector original es:"<<endl;
+	MostrarVector (v,n);
+	int Prom=Promedio (v,n);
+	cout<<"El promedio es: "<<Prom;
+	getch ();
+}
+*/
+
+
+//8. Generar los elementos de la serie Fibonacci en un vector.
+
+/*void MostrarVector (int v[], int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout<<v[i]<<" ";
+	}
+return ;
+}
+
+void Fibonacci (int v[], int n)
+{
+	if (n==0)
+	{
+
+	}
+	if (n==1)
+		v[0]=1;
+	if (n==2)
+	{
+		v[0]=0;
+	    v[1]=1;
+		
+	}
+	else 
+	{
+		Fibonacci (v,n-1);
+	    v[n-1]=v[n-3]+v[n-2];
+	}
+}
+
+void main()
+{
+	int v[50],n;
+	cout<<"Ingresar la cantidad de elementos: ";
+	cin>>n;
+	Fibonacci (v,n);
+	MostrarVector (v,n);
+	getch ();
+}
+*/
