@@ -1,0 +1,113 @@
+// clase 5.cpp : main project file.
+
+#include "stdafx.h"
+#include "iostream"
+#include "conio.h"
+
+using namespace std;
+
+const int diaMes[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+class fecha{
+private:
+ int dia;
+ int mes;
+ int anho;
+
+public:
+ fecha() {
+   dia=mes=anho=0;   
+ }
+
+ void setDia(int d)
+ { dia=d; }
+ 
+ int getDia()
+ { return dia; }
+
+ void setMes(int m)
+ { mes=m; }
+ 
+ int getMes()
+ { return mes; }
+
+ void setAnho(int a)
+ { anho=a; }
+ 
+ int getAnho()
+ { return anho; }
+
+ void leer ()
+ {
+	 int d, m, a;
+	 cout<<"Ingrese el dia: ";
+	 cin>> d;    cout<<endl;
+	 cout<<"Ingrese el mes: ";
+	 cin>> m;    cout<<endl;
+	 cout<<"Ingrese el año: ";
+	 cin>> a;    cout<<endl;
+
+	 dia=d;
+	 mes=m;
+	 anho=a;
+ }
+
+ void mostrar ()
+ {
+	 cout<<dia<<"/"<<mes<<"/"<<anho;
+
+ }
+ void aumentarDias (int d);
+ void mostrarMayor (fecha f1);
+ int cantidadDias (fecha f1);
+
+}; //fin clase
+
+void fecha::aumentarDias(int d)
+{
+	while (d!=0)
+	{
+		dia=dia+1;
+		if(dia>diaMes[mes])
+		{
+			dia=1;
+		    mes=mes+1;
+			if(mes>12)
+			{
+				mes=1;
+				anho=anho+1;
+			}
+		}
+	d--;
+	}
+}
+
+void fecha::mostrarMayor (fecha f1)
+{
+	
+
+}
+
+int fecha::cantidadDias (fecha f1)
+{
+	int i=0
+	while (getdia()<=f1.getdia())
+	{
+		i=i+1
+	}
+		
+}
+
+
+void main()
+{
+	fecha f1;
+	f1.leer ();
+	f1.mostrar ();
+	int d;
+	cout<<"ingresar el numero de dias a aumentar: ";
+	cin>> d;
+	f1.aumentarDias(d);
+	f1.mostrar ();
+	cout<<endl;
+	getche();
+}
