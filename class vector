@@ -1,0 +1,233 @@
+// practico 2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+typedef int tipoElem;
+const int MAX=50;
+
+class vector
+{
+private:
+   tipoElem v[MAX];
+   int n;
+
+public:
+   vector()
+   {
+	  n=0;	  
+   }
+
+void setElem(tipoElem x,int p){
+   v[p]=x;
+}
+
+int getElem(int p){
+  return v[p];
+}
+
+void setDim(int d){
+  n=d;
+}
+
+int getDim(){
+  return n;
+}
+
+void leer();
+
+void imprimir();
+
+bool vacio()
+{ return n==0; }
+
+bool lleno()
+{ return n==MAX; }
+
+void eliminarUlt(int p)
+{ eliminar(n-1); }
+
+void insertar(tipoElem x,int p);
+
+void insertarUlt(tipoElem x)
+{ insertar(x,n); }
+
+void insertarPri(tipoElem x)
+{ insertar(x,0); }
+
+void eliminar(int p);
+
+void eliminarUlt()
+{ eliminar(n-1); }
+
+void eliminarPri()
+{ eliminar(0); }
+
+int kesimomenor (int k);
+
+void interseccion (vector v1, vector v2);
+
+void vector::fusionar (vector v1, vector v2);
+
+}; //end class
+
+void vector::leer()
+{
+	int m;
+	cout<<"Cantidad elementos:";
+	cin>>m; int x;
+	setDim(m);
+	for(int i=0;i<m;i++){
+	  cout<<"Elem:"; cin>>x;
+	  setElem(x,i);
+	}
+}
+
+void vector::imprimir()
+{
+	for(int i=0;i<getDim();i++) {
+	  cout<<getElem(i)<<"  ";
+	}
+	cout<<endl;
+}
+
+void vector::insertar(tipoElem x, int p){
+  if(p<0 || p >= n) {	  
+	  cout<<"Posicion no valida...!!!";
+	  return ;
+  } 
+  if(lleno()){
+     cout<<"Vector lleno...!!!";
+	 return ;
+  }	 
+	int k=n-1;
+	while(k>=p){
+	   v[k+1]=v[k];
+	   k--;
+	}
+	 v[p]=x;
+	 n=n + 1;	
+}
+
+void vector::eliminar(int p){
+  if(p<0 || p >= n) {	  
+	  cout<<"Posicion no valida...!!!";
+	  return ;
+  } 
+  if(vacio()){
+     cout<<"Vector vacio...!!!";
+	 return ;
+  }	 
+	int k=p + 1;
+	while(k < n){
+	   v[k-1]=v[k];
+	   k++;
+	}	 
+	 n=n - 1;	
+}
+
+void ordenarmenor (int v[],int n)
+{
+	int i=0;
+	int j=1;
+	int a;
+	while (i<n)
+	{
+		while (j<n)
+		{
+			if(v[i]>v[j])
+			{
+				a=v[i];
+				v[i]=v[j];
+				v[j]=a;
+			}
+			j++;
+		}
+		i++;
+        j=i+1;  	
+	}
+}
+
+
+int vector::kesimomenor (int k)
+{
+	ordenarmenor (v,getDim ());
+	return v[k];
+
+}
+
+void vector::interseccion (vector v1, vector v2)
+{
+	int i=0;
+	int j=0;
+	int m=0;
+	while (i<v1.getDim())
+	{
+		while (j<v2.getDim())
+		{
+			if (v1.getElem(i)==v2.getElem(j))
+			{
+				insertarUlt(v1.getElem(i));
+				j=v2.getDim()-1;
+			}
+			j++;
+		}
+		i++;
+		j=0;
+	}
+}
+
+/*vector interseccion (vector v1)
+{
+
+
+
+
+}*/
+
+void vector::fusionar (vector v1, vector v2)
+{
+	int i=0;
+	int j=0;
+	while (i<v1.getDim () && j<v2.getDim())
+	{
+		insertarUlt (v1.getElem (i));
+		insertarUlt (v2.getElem (j));
+		i++;
+		j++;
+	}
+	while (i<v1.getDim())
+	{
+		insertarUlt (v1.getElem (i));
+		i++;
+	}
+	while (j<v2.getDim())
+	{
+		insertarUlt (v2.getElem (j));
+		j++;
+	}
+}
+
+
+void main()
+{
+	vector v1,v2,v3;
+	v1.leer();
+	/*int k;
+	cout<<"Ingrese el menor que desea ver: ";
+	cin>>k;
+	cout<<endl;
+	int a=v1.kesimomenor(k-1);
+	cout<<a;*/
+	v2.leer();
+	v3.fusionar (v1,v2);
+	v3.imprimir();
+
+
+
+	getch();
+}
