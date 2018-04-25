@@ -1,0 +1,104 @@
+// practico.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+class alumno
+{
+private:
+	int registro;
+	char nombre[30];
+    char apellidos[30];
+    int edad;
+
+public:
+	alumno()
+	{
+		registro=0;
+		nombre[30] = " ";
+		apellidos[30]=" ";
+		edad=0;
+	}
+	void setRegistro (int r)
+	{
+		registro = r;
+	}
+	void setNombre (char n[30])
+	{
+		nombre[30]=n[30];
+	}
+	void setApellidos (char a[30])
+	{
+		apellidos[30]=a[30];
+	}
+	void setEdad (int e)
+	{
+		edad = e;
+	}
+	int getRegistro ()
+	{
+		return registro;
+	}
+	char getNombre ()
+	{
+		return nombre[30];
+	}
+	char getApellidos ()
+	{
+		return apellidos[30];
+	}
+	int getEdad ()
+	{
+		return edad;
+	}
+
+	void leerA ()
+	{
+		cout<<"Ingresar los datos del alumno: "<<endl;
+		cout<<"Nombre: ";
+		gets (nombre);
+		cout<<endl<<"Apellidos: ";
+		gets (apellidos);
+		cout<<endl<<"Registro: ";
+		cin>>registro;
+		cout<<endl<<"Edad: ";
+		cin>>edad;
+		cout<<endl<<endl<<endl;
+	}
+
+	void mostrarA ()
+	{
+		cout<<"LOS DATOS DEL ALUMNO SON:"<<endl;
+		cout<<"Nombre: "<<nombre<<endl;
+		cout<<"Apellidos: "<<apellidos<<endl;
+		cout<<"Registro: "<<registro<<endl;
+		cout<<"Edad: "<<edad<<endl;
+		cout<<endl<<endl<<endl;
+	}
+
+	void verificarEdad ()
+	{
+		if (getEdad ()>=18)
+			cout<<"Es mayor de edad";
+		else
+			cout<<"No es mayor de edad";
+	}
+}//end class
+
+
+void main()
+{
+	alumno A1;
+	A1.leerA();
+	A1.mostrarA();
+	A1.verificarEdad();
+	getche();
+
+}
+
+	
+	
