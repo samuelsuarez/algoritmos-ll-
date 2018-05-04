@@ -1,0 +1,158 @@
+//CLASE CUADRADO
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "figura.h"
+#include "rectas.h"
+
+using namespace std;
+
+class cuadrado
+{
+private:
+	int lado;
+	recta r1;
+	recta r2;
+	recta r3;
+	recta r4;
+public:
+	void setLad(int l)
+	{
+		lado=l;
+	}
+	int getLad ()
+	{
+		return lado;
+	}
+	void setR1 (recta Rta1)
+	{
+		r1=Rta1;
+	}
+	recta getR1 ()
+	{
+		return r1;
+	}
+	void setR2 (recta Rta2)
+	{
+		r2=Rta2;
+	}
+	recta getR2 ()
+	{
+		return r2;
+	}
+	void setR3 (recta Rta3)
+	{
+		r3=Rta3;
+	}
+	recta getR3 ()
+	{
+		return r3;
+	}
+	void setR4 (recta Rta4)
+	{
+		r4=Rta4;
+	}
+	recta getR4 ()
+	{
+		return r4;
+	}
+	
+    void leerC ()
+	{
+		cout<<"ingresar el valor de los lados del cuadrado: ";
+		cin>>lado;
+		cout<<"Ingresar los puntos de la primera recta: ";
+		r1.leerRec ();
+		r2.leerRec ();
+		r3.leerRec ();
+		r4.leerRec ();
+	}
+
+	void mostrarC()
+	{
+		cout<<"El valor de los lados del cuadrado es: "<<lado<<endl;
+		cout<<"Los puntos que definen cada lado son:"<<endl;
+		r1.mostrarRec ();
+		r2.mostrarRec ();
+		r3.mostrarRec ();
+		r4.mostrarRec ();
+	}
+
+
+    int areaC ()
+	{
+		int a;
+		a=lado*lado;
+		return a;
+	}
+
+
+	};//end class
+
+void main ()
+{
+	cuadrado C1;
+	C1.leerC ();
+	C1.mostrarC ();
+	int a;
+	a=C1.areaC();
+	cout<<a<<" cm2"<<endl;
+	getch();
+}
+
+//CLASE RECTA
+#include "stdafx.h"
+#include "iostream"
+#include "punto.h"
+
+using namespace std;
+
+class recta
+{
+private:
+	punto p1;
+	punto p2;
+public:
+	void setP1 (punto pto1)
+	{
+		p1=pto1;
+	}
+	void setP2 (punto pto2)
+	{
+		p2=pto2;
+	}
+	punto getP1 ()
+	{
+		return p1;
+	}
+	punto getP2 ()
+	{
+		return p2;
+	}
+
+	void leerRec ()
+	{
+		p1.leer();
+		p2.leer();
+
+    }
+	
+	void mostrarRec ()
+	{
+		cout<<"p1= ";
+		p1.mostrar ();
+		cout<<"p2= ";
+		p2.mostrar ();
+		cout<<endl<<endl<<endl;
+	}
+
+};
+
+
+void main()
+{
+	recta r1;
+	r1.leerRec();
+	getch();
+}
+
