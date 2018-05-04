@@ -1,0 +1,265 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "hospedaje.h"
+
+using namespace std;
+
+class departamento
+{
+private:
+	int codigo;
+	char desc[40];
+	int precio;
+
+public:
+	void setCod (int c)
+	{
+		codigo=c;}
+
+	int getCod ()
+	{
+		return codigo;}
+
+	void setDesc (char *d)
+	{
+		desc[0]='\0';
+		strcat(desc,d);}
+
+	char getDesc ()
+	{ 
+		return *desc;}
+
+	void setPre (int p)
+	{
+		precio = p;}
+
+	int getPre ()
+	{
+		return precio}
+
+	void leerD()
+	{
+		cin>>codigo;
+		cin>>desc;
+		cin>>precio;
+		cout<<endl<<endl<<endl;
+	}
+
+	void mostrarD ()
+	{
+		cout<<codigo;
+		cout<<desc;
+		cout<<precio;
+		cout<<endl<<endl<<endl;
+	}
+
+};//endl class
+
+
+void main ()
+{
+	departamento d1;
+	d1.leerD ();
+	d1.mostrarD();
+	d1.buscarCod();
+	getch ();
+}
+
+
+
+
+
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "fecha.h"
+
+using namespace std;
+
+class hospedaje
+{
+private:
+	int nro;
+	fecha fechEnt;
+	fecha fechSal;
+	int desc;
+	int cod;
+	char nombre[30];
+	int mont;
+	
+public:
+	void setNro (int n)
+	{nro=n;}
+
+	int getNro ()
+	{
+		return nro;}
+
+	void setFechE (fecha ent)
+	{
+		fechEnt=ent;}
+
+	fecha getFechE ()
+	{
+		return fechEnt;}
+
+	void setFechS (fecha sal)
+	{
+		fechSal=sal;}
+
+	fecha getFechS ()
+	{
+		return fechSal;}
+
+	void setDesc (int d)
+	{
+		desc=d;}
+
+	int getDesc ()
+	{
+		return desc;}
+
+	void setCod (int c)
+	{
+		cod=c;}
+
+	int getCod ()
+	{
+		return cod;}
+
+	void setNom (char *n)
+	{
+		nombre[0]='\0';
+		strcat (nombre,n);}
+
+	char getNom ()
+	{
+		return *nombre;}
+
+	void setMont (int m)
+	{
+		mont=m;}
+
+	int getMon ()
+	{
+		return mont;}
+
+	void leerH ()
+	{
+		cout<<"Numero de cuarto: ";
+		cin>>nro;cout<<endl;
+		cout<<"Fecha de ingreso: ";
+		fechEnt.leer ();cout<<endl;
+		cout<<"Fecha de salida: ";
+		fechSal.leer ();cout<<endl;
+		cout<<"Su descuento es de: ";
+		cin>>desc;cout<<endl;
+		cout<<"El monto a pagar es: ";
+		cin>>mont;cout<<endl;
+
+	}
+
+	void mostrarH ()
+	{
+		cout<<nro<<endl;
+		fechEnt.mostrar();
+		fechSal.mostrar();
+		cout<<desc;
+		cout<<mont;
+		cout<<endl<<endl<<endl;
+	}
+  
+  
+  
+  #include "stdafx.h"
+#include "iostream"
+#include <conio.h>
+using namespace std;
+
+const int diaMes[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+
+class fecha{
+private:
+ int dia;
+ int mes;
+ int anho;
+  				  
+public:
+ fecha() {
+   dia=mes=anho=0;   
+ }
+
+ void setDia(int d)
+ { dia=d; }
+ 
+ int getDia()
+ { return dia; }
+
+ void setMes(int m)
+ { mes=m; }
+ 
+ int getMes()
+ { return mes; }
+
+ void setAnho(int a)
+ { anho=a; }
+ 
+ int getAnho()
+ { return anho; }
+
+ void leer()
+ {
+    cout<<"Dia:"; cin>>dia;		
+	cout<<"Mes:"; cin>>mes;		
+	cout<<"Anho:"; cin>>anho;	
+ }
+ 
+ void mostrar()
+ {
+   cout<<dia<<"/"<<mes<<"/"<<anho;
+ }
+
+ bool validar()
+ {
+    if(dia>diaMes[mes] || mes>12 || anho<=0 )
+		return false;
+	else
+		return true;
+ }
+
+ int diferencia (fecha f1);
+ int diasAnho ();
+
+}; //fin clase
+
+int fecha::diasAnho ()
+{
+    int a=getAnho()*360;
+	int i=0;
+	while (i<=getMes())
+	{
+		a=a+diaMes[i];
+		i++;
+	}
+	a=a+getDia();
+	return a;
+
+}
+
+int fecha::diferencia (fecha f1)
+{
+	int a;
+	int b;
+	int dias;
+	a=f1.diasAnho();
+	b=diasAnho();
+	if (a>b)
+		dias=a-b;
+	else
+		dias=b-a;
+
+
+}
