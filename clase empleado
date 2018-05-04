@@ -1,0 +1,203 @@
+//CLASE FECHA
+
+#include "stdafx.h"
+#include "iostream"
+#include <conio.h>
+using namespace std;
+
+const int diaMes[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+
+class fecha{
+private:
+ int dia;
+ int mes;
+ int anho;
+  				  
+public:
+ fecha() {
+   dia=mes=anho=0;   
+ }
+
+ void setDia(int d)
+ { dia=d; }
+ 
+ int getDia()
+ { return dia; }
+
+ void setMes(int m)
+ { mes=m; }
+ 
+ int getMes()
+ { return mes; }
+
+ void setAnho(int a)
+ { anho=a; }
+ 
+ int getAnho()
+ { return anho; }
+
+ void leer()
+ {
+    cout<<"Dia:"; cin>>dia;		
+	cout<<"Mes:"; cin>>mes;		
+	cout<<"Anho:"; cin>>anho;	
+ }
+ 
+ void mostrar()
+ {
+   cout<<dia<<"/"<<mes<<"/"<<anho;
+ }
+
+ bool validar()
+ {
+    if(dia>diaMes[mes] || mes>12 || anho<=0 )
+		return false;
+	else
+		return true;
+ }
+
+
+ 
+ void Edad ();
+ int AñoAnti ();
+
+}; //fin clase
+
+
+
+void fecha::Edad ()
+{
+	int edad;
+	edad=2018-anho;
+	if (mes<5)
+		edad=edad-1;
+	if(mes==5)
+	{
+		if(dia-4)
+			edad=edad-1;
+	}
+	cout<<edad;
+
+
+}
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "fechas.h"
+
+using namespace std;
+
+//CLASE EMPLEADO
+class empleado
+{
+private:
+	int cod;
+	char nombre[30];
+	char Apaterno[30];
+	char Amaterno[30];
+	fecha fechaIngreso;
+	fecha fechaNacimiento;
+
+public:
+	void setCod (int c)
+	{cod=c;}
+	
+	int getCod ()
+	{return cod;}
+	
+	void setNom (char *n)
+	{nombre[0]='\0';
+	strcat (nombre,n);}
+
+	char *getNom ()
+	{return nombre;}
+
+	void setAP (char *ap)
+	{Apaterno[0]='\0';
+	strcat (Apaterno,ap);}
+
+	char *getAP ()
+	{return Apaterno;}
+
+	void setAM (char *am)
+	{
+		Amaterno[0]='\0';
+	    strcat (Amaterno,am);}
+
+	char *getAM ()
+	{
+		return Amaterno;}
+
+	void setFechaI (fecha f1)
+	{
+		fechaIngreso=f1;}
+
+	fecha getFechaI ()
+	{
+		return fechaIngreso;}
+
+	void setFechaN (fecha f2)
+	{
+		fechaNacimiento = f2;}
+
+	fecha getFechaN ()
+	{
+		return fechaNacimiento;}
+ 
+	void leerE()
+	{
+		cout<<"Ingresar el codigo del emplead: ";
+		cin>>cod;
+		cout<<endl;
+		cout<<"ingresar datos personales:"<<endl;
+		cout<<"nombre: ";
+		cin>>nombre;cout<<endl;
+		cout<<"Apellido paterno:";
+		cin>>Apaterno;cout<<endl;
+		cout<<"Apellido materno:";
+		cin>>Amaterno;cout<<endl;
+		cout<<"Fecha de inicio del trabajo: ";
+		fechaIngreso.leer();cout<<endl;
+		cout<<"Fecha de nacimiento: ";
+		fechaNacimiento.leer();cout<<endl;
+	}
+
+	void mostrarE()
+	{
+		cout<<"Datos del empleado:"<<endl;
+		cout<<"Codigo: "<<cod<<endl;
+		cout<<"Nombre: "<<nombre<<endl;
+		cout<<"Apellidos: "<<Apaterno<<" "<<Amaterno<<endl;
+		cout<<"Fecha de inicio: ";
+		fechaIngreso.mostrar();
+		cout<<endl;
+		cout<<"Fecha de nacimiento: ";
+		fechaNacimiento.mostrar();
+		cout<<endl;
+	}
+
+	int EdadE ()
+	{
+		cout<<"La edad del empleado es: ";
+		fechaNacimiento.Edad();
+		
+	}
+
+	int Antiguedad ()
+	{
+		cout<<"Su año de antiguedad es: ";
+		fechaIngreso.Edad();
+	}
+}//endl class
+
+
+void main()
+{
+	empleado e1;
+	e1.leerE();
+	e1.mostrarE();
+	e1.EdadE();
+	e1.Antiguedad();
+	getch();
+}
