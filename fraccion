@@ -1,0 +1,84 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+class fraccion
+{
+private:
+	int num;
+	int den;
+
+public:
+	fraccion()
+	{
+		num = 1;
+	    den = 1;
+	}
+
+	void setNum (int n)
+	{num=n;}
+
+	void setDen (int d)
+	{den=d;}
+
+	int getNum ()
+	{return num;}
+
+	int getDen ()
+	{return den;}
+
+	void leerF ()
+	{
+		cout<<"Ingresa el valor del numerador: ";
+		cin>>num; cout<<endl;
+		cout<<"Ingresa el valor del denominador: ";
+		cin>>den; cout<<endl<<endl<<endl;
+	}
+
+	void mostrarF ()
+	{
+		if(den==1)
+		{
+			cout<<num;
+			cout<<endl<<endl<<endl;
+		}
+		else
+		{
+			cout<<num<<"/"<<den;
+	        cout<<endl<<endl<<endl;
+		}
+	}
+	void simplificar ();
+
+};//end class
+
+void fraccion::simplificar ()
+{
+	int i=2;
+	while (i<=num || i<=den)
+	{
+		if (num%i==0 && den%i==0)
+		{
+			num=num/i;
+			den=den/i;
+		}
+		else 
+			i++;
+	}
+}
+
+
+
+
+
+void main ()
+{
+	fraccion f1;
+	f1.leerF();
+	f1.mostrarF();
+	f1.simplificar ();
+	f1.mostrarF ();
+	getch ();
+}
