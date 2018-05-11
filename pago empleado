@@ -1,0 +1,260 @@
+include "stdafx.h"
+#include <iostream>
+
+
+using namespace std;
+
+class fecha
+{
+private:
+	int dia;
+	int mes;
+	int anho;
+
+public:
+	fecha ()
+	{
+		dia=0;
+		mes=0;
+		anho=0;
+	}
+
+	void setDia (int d)
+	{dia=d;}
+
+	void setMes (int m)
+	{mes=m;}
+
+	void setAnho (int a)
+	{anho=a;}
+
+	int getDia ()
+	{return dia;}
+
+	int getMes ()
+	{return mes;}
+
+	int getAnho ()
+	{return anho;}
+
+	void leerF ()
+	{
+		cout<<"Ingresa el dia: ";
+		cin>>dia;
+		cout<<"Ingresa el mes: ";
+		cin>>mes;
+		cout<<"Ingresa el anho: ";
+		cin>>anho;
+		cout<<endl<<endl<<endl;
+	}
+
+	void mostrarF ()
+	{
+		cout<<anho<<"/"<<mes<<"/"<<dia;
+		cout<<endl<<endl<<endl;
+	}
+	int diferenciafecha (fecha f1,fecha f2)
+	{
+		int diasF1=(f1.getAnho()*365)+(f1.getMes()*30)+f1.getDia();
+		int diasF2=(f2.getAnho()*365)+(f2.getMes()*30)+f2.getDia();
+		int dif;
+		dif=abs(diasF1-diasF2)-1;
+		return dif;
+
+	}
+
+	fecha fechaActual ()
+	{
+		fecha f1;
+		f1.leerF();
+		return f1;
+	}
+	
+};//end class
+
+
+
+
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "fecha.h"
+
+using namespace std;
+
+class empleado
+{
+private:
+	int codigo;
+	char nombre[30];
+	char aPat[30];
+	char aMat[30];
+	fecha Fingreso;
+
+public:
+	//metodos set
+	void setCod (int c)
+	{codigo=c;}
+
+	void setNom (char n[30])
+	{nombre[30]=n[30];}
+
+	void setAp (char p[30])
+	{aPat[30]=p[30];}
+
+	void setAm (char m[30])
+	{aMat[30]=m[30];}
+
+	void setFechaAc (fecha f1)
+	{Fingreso=f1;}
+
+
+	//metodos get
+	int getCod ()
+	{return codigo;}
+
+	char getNom ()
+	{return nombre[30];}
+
+	char getAp ()
+	{return aPat[30];}
+
+	char getAm ()
+	{return aMat [30];}
+
+	fecha getFi()
+	{return Fingreso;}
+
+	void leerE ()
+	{
+		 cout<<"Ingrese el codigo: ";
+		 cin>>codigo;
+		 cin.ignore();
+		 cout<<"Ingrese el nombre: ";
+		 cin.getline (nombre,30);
+		 cout<<"Ingrese el apellido paterno: ";
+		 cin.getline (aPat,30);
+		 cout<<"Ingrese el apellido materno: ";
+		 cin.getline (aMat,30);
+		 Fingreso.leerF();
+		 cout<<endl<<endl<<endl;
+	}
+	
+	
+	
+	void mostrarE ()
+	{
+		cout<<"------------------------------------------------"<<endl;
+		cout<<"\tDATOS EMPLEADO"<<endl;
+		cout<<"Codigo: "<<codigo<<endl;
+		cout<<"Nombre: "<<nombre<<endl;
+		cout<<"Apellido: "<<aPat<<" "<<aMat<<endl;
+		cout<<"Fecha de ingreso: ";
+		Fingreso.mostrarF();
+	}
+		
+
+};//end class
+
+
+
+
+#include "empleado.h"
+
+using namespace std;
+
+class pago
+{
+private:
+	int id;
+	int tipoP;
+	int sueldo;
+
+public:
+	void setID (int i)
+	{id=i;}
+
+	void setTipoP (int t)
+	{tipoP=t;}
+
+	void setSueldo (int s)
+	{sueldo=s;}
+
+	int getID ()
+	{return id;}
+
+	int getTipoP ()
+	{return tipoP;}
+
+	int getSueldo ()
+	{return sueldo;}
+
+	void leerP ()
+	{
+		cout<<"Ingrese el id: ";
+		cin>>id;
+		cout<<"Ingrese el tipo de pago: ";
+	    cin>>tipoP;
+		cout<<"Ingrese el sueldo: ";
+		cin>>sueldo;
+	}
+	
+	void mostrarP()
+	{
+		cout<<"---------------------------------"<<endl;
+		cout<<"DATOS DE PAGO"<<endl;
+		cout<<"Id: "<<id<<endl;
+		cout<<"Tipo de pago: "<<tipoP<<endl;
+		cout<<"Sueldo: "<<sueldo<<endl;
+		cout<<endl<<endl<<endl;
+	}
+
+
+
+};//end class
+
+
+
+
+
+// main.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "pago.h"
+
+using namespace std;
+
+/*void main ()
+{
+	fecha f1,f2,f3,fHoy;
+	int a;
+	f1.leerF ();
+	fHoy = f2.fechaActual();
+	a=f3.diferenciafecha(f1,fHoy);
+	f1.mostrarF();
+	fHoy.mostrarF();
+	cout<<a;
+	getch();
+}*/
+
+/*void main ()
+{
+	empleado e1;
+	e1.leerE();
+	e1.mostrarE();
+	getch();
+}*/
+
+void main ()
+{
+	empleado e1;
+	pago p1;
+	e1.leerE();
+	e1.mostrarE();
+	p1.leerP();
+	p1.mostrarP();
+	getch();
+}
