@@ -1,0 +1,297 @@
+//fecha
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+class fecha
+{
+private:
+	int dia;
+	int mes;
+	int anho;
+
+public:
+	
+	void setDia (int d)
+	{dia=d;}
+
+	void setMes (int m)
+	{mes=m;}
+
+	void setAnho (int a)
+	{anho=a;}
+
+	int getDia ()
+	{return dia;}
+
+	int getMes ()
+	{return mes;}
+
+	int getAnho ()
+	{return anho;}
+
+	void leerF ()
+	{
+		cout<<"Ingrese el dia deseado: ";
+		cin>>dia;
+		cout<<"Ingrese el mes deseado: ";
+		cin>>mes;
+		cout<<"Ingrese el anho deseado: ";
+		cin>>anho;
+		cout<<endl;
+	}
+
+	void mostrarF ()
+	{
+		cout<<"la fecha es: ";
+		cout<<dia<<"/"<<mes<<"/"<<anho;
+		cout<<endl<<endl<<endl;
+
+	}
+
+	int diferencia (fecha f1)
+	{
+		int dias1 = f1.getDia()+(f1.getMes()*30)+(f1.getAnho()*360);
+		int dias2 = getDia()+(getMes()*30)+(getAnho()*360);
+		int dif = dias1-dias2;
+		if (dif<0)
+			dif=dif*(-1);
+		return dif;
+
+	}
+
+
+};//end class
+
+//pagos
+
+#include "stdafx.h"
+#include "iostream"
+#include "conio.h"
+#include "fecha.h"
+#include "empleado.h"
+
+using namespace std;
+
+class pagos
+{
+private:
+	int nro;
+	fecha fechaI;
+	fecha fechaF;
+	int codigo;
+	int pTotal;
+	empleado e1;
+
+public:
+	void setNro (int n)
+	{nro=n;}
+
+	void setFechaI (fecha f1)
+	{fechaI=f1;}
+
+	void setFechaF (fecha f2)
+	{fechaF=f2;}
+
+	void setCod (int c)
+	{codigo=c;}
+
+	void setPtotal (int p)
+	{pTotal=p;}
+
+	void setEm (empleado e2)
+    {e1=e2;}
+
+	int getNro ()
+	{return nro;}
+
+	fecha getFechaI ()
+	{return fechaI;}
+
+	fecha getFechaF ()
+	{return fechaF;}
+
+	int getCod ()
+	{return codigo;}
+
+	int getPtotal ()
+	{return pTotal;}
+
+    empleado getEm ()
+	{return e1;}
+
+	
+
+	void leerP ()
+	{
+		
+		e1.leerE();
+		cout<<endl<<endl;
+		cout<<"Pagos: "<<endl;
+		cout<<"Ingresar el numero: ";
+		cin>>nro;
+		cout<<"Ingrese la fecha de inicio: ";
+		fechaI.leerF();
+		cout<<"Ingrese la fecha de fin: ";
+		fechaF.leerF();
+		cout<<"Ingrese el codigo: ";
+		cin>>codigo;
+		
+		cout<<endl<<endl;
+		
+	}
+
+	void mostrarP ()
+	{
+		e1.mostrarE();
+		cout<<"Datos de pago: ";
+		cout<<nro<<endl;
+		fechaI.mostrarF();
+		fechaF.mostrarF();
+		cout<<codigo<<endl;
+		int a=pagoTotal(fechaI,fechaF);
+		cout<<a;
+		cout<<endl<<endl;
+
+	}
+
+	
+	int busxCodigo (int n)
+	{
+		if (n==1)
+			return 80;
+		if (n==2)
+			return 100;
+		if (n==3)
+			return 150;
+	}
+	
+    
+	int mulNum (int x,int y)
+	{
+		if (y==0)
+			return 0;
+		else {
+			int a=mulNum(x,y-1);
+			return a+x;
+		}
+	}
+	
+	int pagoTotal (fecha fechaI, fecha fechaF)
+	{
+		int n;
+		cout<<"Ingresar el codigo: ";
+		cin>>n;
+		int a=busxCodigo (n);
+		int b=fechaF.diferencia(fechaI);
+		int c=mulNum(a,b);
+		return c;
+
+	}
+
+};
+
+//empleado
+
+#include "stdafx.h"
+#include "iostream"
+#include "conio.h"
+
+
+using namespace std;
+
+class empleado
+{
+private:
+	int codigo;
+	char nombre[30];
+	char apellido [30];
+	int pagoDia;
+
+public:
+	void setCod (int c)
+	{codigo=c;}
+
+	void setNom (char n[30])
+	{nombre[30]=n[30];}
+
+	void setAp (char a[30])
+	{apellido[30]=a[30];}
+
+	void setPdia (int p)
+	{pagoDia=p;}
+
+	int getCod ()
+	{return codigo;}
+
+	char getNom ()
+	{return nombre[30];}
+
+	char getAp ()
+	{return apellido [30];}
+
+	int getPdia ()
+	{return pagoDia;}
+
+	void leerE ()
+	{
+		cout<<"Ingrese los datos del empleado: "<<endl;
+		cout<<"Codigo: ";
+		cin>>codigo;
+		cout<<"Nombre: ";
+		cin.ignore();
+		cin.getline (nombre,30);
+		cout<<"Apellido: ";
+		cin.getline (apellido,30);
+		cout<<"Pago por dia: ";
+		cin>>pagoDia;
+		cout<<endl<<endl;
+
+	}
+
+	void mostrarE ()
+	{
+		cout<<"Datos del empleado: "<<endl;
+		cout<<codigo<<endl;
+		cout<<nombre<<endl;
+		cout<<apellido<<endl;
+		cout<<pagoDia<<" Bs";
+		cout<<endl<<endl<<endl;
+	}
+
+    
+
+};//end class
+
+// f2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "iostream"
+#include "conio.h"
+//#include "fecha.h"
+#include "Pagos.h"
+
+;using namespace std;
+
+/*void main ()
+{
+	fecha	f1, f2;
+	f1.leerF();
+	f2.leerF();
+	f2.diferencia(f1);
+	getch();
+
+
+}*/
+
+void main ()
+{
+	pagos p1;
+	p1.leerP();
+	p1.mostrarP();
+	getch();
+}
